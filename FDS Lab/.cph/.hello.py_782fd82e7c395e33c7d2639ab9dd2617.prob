@@ -1,0 +1,1 @@
+{"name":"Local: hello","url":"d:\\PICT COLLEGE\\Semester 3\\Codes\\DSL Lab\\hello.py","tests":[{"id":1630298253344,"input":"3\nMayur\nAjay\nKaran\n3\nRam\nShubham\nKaran\n3\nMayur\nShubham\nRushikesh\ny\n3\nn","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\PICT COLLEGE\\Semester 3\\Codes\\DSL Lab\\hello.py","group":"local","local":true}

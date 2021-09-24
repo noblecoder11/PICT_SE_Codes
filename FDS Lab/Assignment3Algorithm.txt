@@ -1,0 +1,218 @@
+ALGORITHM
+
+START OF CLASS MATRIX
+Declare a class matrix
+Algorithm for init function:
+1. Take number of rows and columns as input while creating object and assign their values to variables.
+2. Make an empty list 'a' for storing matrix.
+
+Algorithm for input matrix function:
+1. For every row in matrix, take a list as input.
+2. Append the taken list in list 'a' of matrix
+
+Algorithm for display function:
+1. Create a empty list 'matrix'
+2. For every index i from 0 -> number of rows in matrix, create a empty list 'new_row'.
+    2.1. for every index j from 0 -> number of columns
+        2.1.1. append self.a[i][j] in new_row
+    2.2. append new_row in 'matrix'
+3. for every index from 0 -> length of matrix
+    3.1. print matrix[index]
+
+Algorithm for addition function:
+1. read matrices A and B
+2. check if number of rows and columns of both matrices are equal
+    2.1. for every index i from 0 ->no. of rows
+        2.1.1. create an empty list new_row
+        2.1.2. for every index i from 0 -> no. of columns
+            2.1.2.1. append A.a[i][j]+B.a[i][j]
+        2.1.3. append new_row in self.A
+    2.2 display self
+3. else print "you can't add these matrices"
+
+Algorithm for subtraction function:
+1. read matrices A and B
+2.check if number of rows and columns of both matrices are equal
+    2.1. for every index i from 0 ->no. of rows
+        2.1.1. create an empty list new_row
+        2.1.2. for every index i from 0 -> no. of columns
+            2.1.2.1. append A.a[i][j]-B.a[i][j]
+        2.1.3. append new_row in self.A
+    2.2 display self
+3. else print "you can't subtract these matrices"
+
+Algorithm for multiplication function:
+1. read matrices A & B
+2. if no. of columns in A and number of rows in both
+    2.1 for every index i from 0 -> no. of rows of A
+        2.2 create an empty list new_row
+        2.3 for every index j from 0 -> no. of columns of B
+            2.3.1 initialize result equal to 0
+            2.3.2 for every index k in 0 -> no. of rows of B
+                2.3.2.1 add A.a[i][k]*B.a[k][j] to result
+            2.3.3 append result in new_row
+        2.4 append new_row in self.a
+    2.2 call self.display
+3. else print "can't multiply these matrices"
+
+Algorithm for transpose functions:
+1. read matrix A
+2. for every index j from 0 -> no. of rows
+    2.1 create an empty list 'new_row'
+    2.2 for index i from 0 -> no. of columns
+        2.2.1 append A.a[i][j] to new_row
+    2.3 append new_row in self.a
+3. call self.display()
+
+END OF CLASS
+
+Algorithm for main function:
+1. Display the information about program.
+2. Read the number of rows and columns for matrix A
+3. create a object A of type matrix and pass no. of rows and columns as argument.
+4. call input matrix function for A
+5. Read the number of rows and columns for matrix B
+6. create a object B of type matrix and pass no. of rows and columns as argument.
+7. call input matrix function for B
+8. print both matrices
+9. Run a while loop till the break statement is called.
+10. Read choice
+11. If choice is equal to 1, then make a matrix C with no. of rows ans columns equal to either of the matrices and call addition(A, B)
+12. if choice is equal to 2, read character, then make a matrix C with no. of rows ans columns equal to either of the matrices and call subtraction(A, B)
+13. if choice is equal to 3, ask user if he wants AB or BA. read choice
+    13.1 if choice is equal to AB, create an matrix with no. of rows of A and no. of columns of B. And call multiplication(A, B)
+    13.2 if choice is equal to BA, create an matrix with no. of rows of B and no. of columns of A. And call multiplication(B, A)
+    13.3 else print "choice is incorrect"
+14. if choice is equal to 4, make a matrix C with no. of rows equal to number of columns in A and vice versa. And call transpose(A)
+15. if choice is equal to 5, make a matrix C with no. of rows equal to number of columns in B and vice versa. And call transpose(B)
+16. else print "enter a valid choice"
+17. ask the user if he wants to continue, if he enters 'n', break while loop, else continue.
+18. print "thank you".
+
+
+PSEUDOCODE
+
+Start of class matrix
+class matrix:
+    DEF __init__(self, num_row, num_col):
+        self.num_row=num_row
+        self.num_col=num_col
+        self.a=[]
+    
+    DEF input_matrix(self):
+        print(f"Enter the matrix of {self.num_row} rows and {self.num_col} numbers in each row.")
+        FOR i IN range(self.num_row):
+            row=list(map(int, input().split()))
+            self.a.append(row)
+
+    DEF display(self):
+        matrix=[]
+        FOR i IN range(self.num_row):
+            new_row=[]
+            FOR j IN range(self.num_col):
+                new_row.append(self.a[i][j])
+            matrix.append(new_row)
+        
+        FOR i IN range(len(matrix)):
+            print(matrix[i])
+        print()
+    
+    DEF addition(self, A, B):
+        IF A.num_row==B.num_row and A.num_col==B.num_col:
+            FOR i IN range(self.num_row):
+                new_row=[]
+                FOR j IN range(self.num_col):
+                    new_row.append(A.a[i][j]+B.a[i][j])
+                self.a.append(new_row)
+            C.display()
+        ELSE:
+            print("You can't add matrices with different number of rows and columns.")
+
+    DEF subtraction(self, A, B):
+        IF A.num_row==B.num_row and A.num_col==B.num_col:
+            FOR i IN range(self.num_row):
+                new_row=[]
+                FOR j IN range(self.num_col):
+                    new_row.append(A.a[i][j]-B.a[i][j])
+                self.a.append(new_row)
+            C.display()
+        ELSE:
+            print("You can't subtract matrices with different number of rows and columns.")
+
+    DEF multiplication(self, A, B):
+        IF A.num_col==B.num_row:
+            FOR i IN range(A.num_row):
+                new_row=[]
+                FOR j IN range(B.num_col):
+                    result=0
+                    FOR k IN range(B.num_row):
+                        result += A.a[i][k] * B.a[k][j]
+                    new_row.append(result)
+                self.a.append(new_row)
+            self.display()
+        ELSE:
+            print("You can't multiply these matrices. For multiplication you need number of columns in first matrix equal to number of rows in second matrix.")
+
+
+    DEF transpose(self, A):
+        FOR j IN range(A.num_row):
+            new_row=[]
+            FOR i IN range(A.num_col):
+                new_row.append(A.a[i][j])
+            self.a.append(new_row)
+        self.display()
+
+
+#MAIN FUNCTION
+
+print main menu
+
+r1=int(input("Enter number of rows in matrix A: "))
+c1=int(input("Enter number of columns in matrix A: "))
+A=matrix(r1, c1)
+A.input_matrix()
+
+r2=int(input("Enter number of rows in matrix B: "))
+c2=int(input("Enter number of columns in matrix B: "))
+B=matrix(r2, c2)
+B.input_matrix()
+
+print("Matrix A")
+A.display()
+print("Matrix B")
+B.display()
+
+WHILE(True):
+    ch=int(input("Enter a choice: "))
+    IF ch==1:
+        C=matrix(r1, c1)
+        C.addition(A, B)
+    ELIF ch==2:
+        C=matrix(r1, c1)
+        C.subtraction(A, B)
+    ELIF ch==3:
+        print("What do you want?: (AB or BA)")
+        choice=input()
+        IF choice=="AB":
+            C=matrix(r1, c2)
+            C.multiplication(A, B)
+        ELIF choice=="BA":
+            C=matrix(r2, c1)
+            C.multiplication(B, A)
+        ELSE:
+            print("The choice you entered is incorrect. Please enter AB or BA.")
+    ELIF ch==4:
+        C=matrix(c1, r1)
+        C.transpose(A)
+    ELIF ch==5:
+        C=matrix(c2, r2)
+        C.transpose(B)
+    ELSE:
+        print("Enter correct choice. (1 to 5)")
+    
+    cont= input("Do you want to continue(y/n): ")
+    IF cont=='n' or cont=='N':
+        print("Thank you for using this program.\n")
+        BREAK
+    ELSE:
+        CONTINUE

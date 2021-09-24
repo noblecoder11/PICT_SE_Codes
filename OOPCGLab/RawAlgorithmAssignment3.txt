@@ -1,0 +1,33 @@
+create array of type student
+create array of type personalinfor
+create vector of roll nos
+
+#create
+1. read the roll number
+2. if roll no is present in vector, print "already present"
+3. else search for empty spot
+4. 	    if empty spot is not present, print "database full"
+5. 	    else add the student to empty spot in array of student type. also add the roll number to the same index in array.
+4. 	count of students++
+#FIND THE EMPTY SPOT
+1. traverse through the vector of rollnos and whenever there is rollno==0, take that as empty spot and fill the student there
+
+#delete
+1. read the roll number
+2. get index of roll number
+3. if roll number is not present in vector, print "not present"
+4. else DELETE the student from the index of roll number. set the roll number=0.
+5. count of students--
+#DELETE
+1. make that student as default student.
+
+#update
+1. read rollno
+2. find index of roll no
+3. if rollno is not in vector rollno, print "not present"
+4. else update the student from the index of rollno. set the roll no=rollno
+#UPDATE
+1. display previous info of student
+2. Ask user to enter new information including NEW roll no
+3. also update the new roll number in vector rollno
+
