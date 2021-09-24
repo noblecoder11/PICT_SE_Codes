@@ -1,6 +1,6 @@
 # - represents done
 
-Assignment 1
+Assignment 1 (Complex numbers)
 #ERROR HANDLING
 #REPRESENTATION OF COMPLEX NUMBERS
 #DEFAULT VALUE
@@ -8,7 +8,7 @@ Assignment 1
 #PROPER COMMENTING
 
 
-Assignment 2
+Assignment 2 (Student Database)
 #FORMAT OF DATE OF BIRTH AND BLOODGROUP
 #DATE NOT GREATER THAN CURRENT DATE
 #PHONE NUMBER OF EXACTLY 10 DIGITS
