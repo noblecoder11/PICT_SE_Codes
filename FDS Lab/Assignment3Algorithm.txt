@@ -153,7 +153,6 @@ class matrix:
         ELSE:
             print("You can't multiply these matrices. For multiplication you need number of columns in first matrix equal to number of rows in second matrix.")
 
-
     DEF transpose(self, A):
         FOR j IN range(A.num_row):
             new_row=[]
@@ -161,10 +160,10 @@ class matrix:
                 new_row.append(A.a[i][j])
             self.a.append(new_row)
         self.display()
-
+END OF CLASS
 
 #MAIN FUNCTION
-
+START
 print main menu
 
 r1=int(input("Enter number of rows in matrix A: "))
@@ -216,3 +215,5 @@ WHILE(True):
         BREAK
     ELSE:
         CONTINUE
+
+END
