@@ -90,13 +90,12 @@ class String:
     END FUNCTION
 
     FUNCTION is_palindrome():
-        n=length(string)
         string2=string.reverse
-        IF string2==str2:
+        IF string==string2:
             return ("The string is a Palindrome.")
         ENDIF
         ELSE:
-            return ("Ther string is NOT a Palindrome.")
+            return ("The string is NOT a Palindrome.")
         END ELSE
     END FUNCTION
 
@@ -193,3 +192,51 @@ WHILE TRUE:
         BREAK
     END ELSE
 END LOOP
+STOP
+
+
+
+OUTPUT
+MAIN MENU
+This program lets you to: 
+ 1. Find word with longest length in string.
+ 2. Determine the frequency of given character in given string.
+ 3. Check whether the string is palindrome or not.
+ 4. Know the index of first appearace of given substring.
+ 5. Count occurrences of each word in the string.
+ 6. To count occurrences of given word in string.
+HAVE FUN WITH STRINGS!
+--------------------------------
+Enter the string:
+The world wastes about 1 billion metric tons of food each year.
+
+Enter a choice: 1
+'billion' is the longest word.
+
+Do you want to continue(y/n): y
+Enter a choice: 2
+Enter a character:w
+Character 'w' appears 2 times in the string.
+
+Do you want to continue(y/n): y
+Enter a choice: 3
+Ther string is NOT a Palindrome.
+
+Do you want to continue(y/n): y 
+Enter a choice: 4
+Enter a substring: rl
+First appearance of rl is at index 6
+
+Do you want to continue(y/n): y
+Enter a choice: 5
+Words in string and their frequencies are: 
+{'the': 1, 'world': 1, 'wastes': 1, 'about': 1, '1': 1, 'billion': 1, 'metric': 1, 'tons': 1, 'of': 1, 
+'food': 1, 'each': 1, 'year': 1}
+
+Do you want to continue(y/n): y
+Enter a choice: 6
+Enter a word: tons
+'tons' occurs 1 times in string.
+
+Do you want to continue(y/n): n
+Thank you for playing.
