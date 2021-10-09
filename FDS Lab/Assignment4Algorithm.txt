@@ -1,0 +1,186 @@
+ALGORITHM:
+
+Algorithm for Linear Search:
+1. For each element in arr, compare it with the roll number 'k' to be found.
+2. If element is equal to k, return index of that element.
+3. If after comparing with all elements, if k is not present in list, return "roll number not found"
+
+Algorithm for Sentinel Search:
+1. Declare n such that it is equal to length of arr.
+2. Store the last element in variable last
+3. Replace last element with required element (k)
+4. Initialize i=0 and run a while loop till arr[i] != k
+    1. increment if
+5. Replace the last element with last
+6. if i<n-1 or arr[n-1]==k, return i.
+else return "Not Found".
+
+Algorithm for Binary Search:
+1. Initialize left=0 and right=len(arr)-1
+2. Run a while loop till left<=right
+    2.1 Compare k with the middle element.
+    2.2 If k matches with the middle element, we return the mid index.
+    2.3 Else If k is greater than the mid element, then x can only lie in the right half subarray after the mid element. So we make left=mid+1
+    2.4 Else (k is small), make right= mid-1
+3. If the element is not found then return "Not found"
+
+Algorithm for Fibonacci Search:
+1. Find the smallest Fibonacci Number greater than or equal to n. Let this number be fibM [m’th Fibonacci Number]. Let the two Fibonacci numbers preceding it be fibMm1 [(m-1)’th Fibonacci Number] and fibMm2 [(m-2)’th Fibonacci Number].
+2. While the array has elements to be inspected: 
+    1.Compare x with the last element of the range covered by fibMm2
+    2.If x matches, return index
+    3.Else If x is less than the element, move the three Fibonacci variables two Fibonacci down, indicating elimination of approximately rear two-third of the remaining array.
+    4.Else x is greater than the element, move the three Fibonacci variables one Fibonacci down. Reset offset to index. Together these indicate the elimination of approximately front one-third of the remaining array.
+3. Since there might be a single element remaining for comparison, check if fibMm1 is 1. If Yes, compare x with that remaining element. If match, return index.4
+4. If the element is not found return "Not Found".
+
+Algorithm for MAIN MENU:
+1. Print info about program
+2. Input the list in random order
+3. Ask user whether he/she want same list or enter another list
+    1. If they want same list, store the same list in sortedArr
+    2. Else input new list
+5. Run a while loop till break is called
+    1. Print both random and sorted list
+    2. Input choice
+    3. If choice==1
+        1. Input roll number
+        2. Print(linearSearch(arr, k))
+    4. if choice==2
+        1. input roll number
+        2. print(sentinelSearch(arr, k))
+    5. If choice==3
+        1. Input roll number
+        2. Print(binarySearch(arr, k))
+    6. if choice==4
+        1. input roll number
+        2. print(fibonacciSearch(arr, k))
+    7. If choice==5
+        1. Print("Thank you")
+        2. break
+    8. if choice==6
+        1. print("Enter valid choice(1 to 5)")
+
+
+
+
+PSEUDOCODE:
+
+DEF linearSearch(arr, k):
+    FOR i in range(len(arr)):
+        IF arr[i]==k:
+            RETURN (f"{k} is present at index {i}.")
+    RETURN (f"Roll number not found.")
+
+DEF sentinelSearch(arr, k):
+    n=len(arr)
+    last = arr[n - 1]   
+    arr[n - 1] = k
+    i = 0
+
+    while (arr[i] != k):
+        i += 1
+    
+    arr[n - 1] = last
+ 
+    if ((i<n-1) or (arr[n-1] == k)):
+        return (f"{k} is present at index {i}.")
+    else:
+        return ("Roll number not found.")
+    
+def binarySearch(arr, k):
+    left=0
+    right=len(arr)-1
+
+    while left <= right:
+        mid = left + (right - left) // 2; 
+        if arr[mid] == k:
+            return (f"The roll number {k} is present at index {mid}.")
+        elif arr[mid] < k:  
+            left = mid + 1
+        else:               
+            right = mid - 1
+      
+    return ("Roll number not found.") 
+
+def fibonacciSearch(arr, k):
+    n=len(arr)
+    fibm2 = 0 
+    fibm1 = 1  
+    fib = fibm2 + fibm1  
+ 
+    
+    while (fib < n):
+        fibm2 = fibm1
+        fibm1 = fib
+        fib = fibm2 + fibm1
+ 
+    offset = -1
+
+    while (fib > 1):
+        # Check if fibm2 is a valid location
+        i = min(offset+fibm2, n-1)
+ 
+        if (arr[i] < k):
+            fib = fibm1
+            fibm1 = fibm2
+            fibm2 = fib - fibm1
+            offset = i
+            
+        elif (arr[i] > k):
+            fib = fibm2
+            fibm1 = fibm1 - fibm2
+            fibm2 = fib - fibm1
+
+        else:
+            return (f"Roll number {k} found at index {i}.")
+
+    if (fibm1 and arr[n-1] == k):
+        return (f"Roll number {k} found at index {n-1}.")
+ 
+    return ("Roll number not found.")
+
+
+#MAIN MENU
+print("This program searches the roll number in the list of students using:\n1. Linear Search\n2. Sentinial Search\n3. Binary Search\n4. Fibonacci Search\n")
+
+arr=list((map(int, input("Enter the list of roll number of students in RANDOM order (space separated): ").split())))
+
+print("1. Sort the same list\n2. Enter new sorted list")
+sortedChoice=int(input("Enter your choice: "))
+if sortedChoice==1:
+    sortedArr=sorted(arr)
+else:
+    sortedArr=list((map(int, input("Enter the list of roll number of students in SORTED ORDER (space separated): ").split())))
+
+while True:
+    print("-"*20)
+    print("The list you entered is: ", arr)
+    print("Sorted list: ", sortedArr)
+
+    print("1. Linear Search\n2. Sentinel Search\n3. Binary Search\n4. Fibonacci Search\n5. Exit")
+    choice=int(input("Enter a choice: "))
+
+    if choice==1:
+        k=int(input("Enter the roll number you want to search: "))
+        print(linearSearch(arr, k))
+
+    elif choice==2:
+        k=int(input("Enter the roll number you want to search: "))
+        print(sentinelSearch(arr, k))
+
+    elif choice==3:
+        k=int(input("Enter the roll number you want to search: "))
+        print(binarySearch(sortedArr, k))
+
+    elif choice==4:
+        k=int(input("Enter the roll number you want to search: "))
+        print(fibonacciSearch(arr, k))
+
+    elif choice==5:
+        print("Thank you.")
+        break
+
+    else:
+ 
+        print("Enter a valid choice(1 to 5).")

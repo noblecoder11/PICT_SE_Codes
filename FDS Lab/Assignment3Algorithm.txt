@@ -124,7 +124,7 @@ class matrix:
                 FOR j IN range(self.num_col):
                     new_row.append(A.a[i][j]+B.a[i][j])
                 self.a.append(new_row)
-            C.display()
+            self.display()
         ELSE:
             print("You can't add matrices with different number of rows and columns.")
 
@@ -135,7 +135,7 @@ class matrix:
                 FOR j IN range(self.num_col):
                     new_row.append(A.a[i][j]-B.a[i][j])
                 self.a.append(new_row)
-            C.display()
+            self.display()
         ELSE:
             print("You can't subtract matrices with different number of rows and columns.")
 
