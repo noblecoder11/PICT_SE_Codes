@@ -1,7 +1,0 @@
-problem statement
-software and hardware requirements
-algorithm
-pseudo code
-code
-output
-conclusion
