@@ -4,10 +4,7 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui
-{
-    class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -17,17 +14,20 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void Assignment6A();
-    void BresenhamCircle(int, int, int);
-    void DDALine(float, float, float, float);
-    void BresenhamLine(int, int, int, int);
 
 private slots:
-    void on_btnPlot_clicked();
+
+    void on_btnPlotLine_clicked();
+
+    void on_btnScanLine_clicked();
 
     void on_btnColor_clicked();
 
     void on_btnClear_clicked();
+
+    void DDALine(int, int, int, int);
+
+    void BresenhamLine(int, int, int, int);
 
 private:
     Ui::MainWindow *ui;

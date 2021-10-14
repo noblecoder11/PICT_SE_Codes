@@ -127,7 +127,7 @@ while True:
     elif choice==4:
         k=int(input("Enter the roll number you want to search: "))
         print()
-        print(fibonacciSearch(arr, k))
+        print(fibonacciSearch(sortedArr, k))
 
     # Exit
     elif choice==5:

@@ -1,16 +1,40 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QColorDialog>
+#include <QTime>
 #define height 400
 #define width 400
 
+void delay( int millisecondsToWait )
+{
+
+    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
+
+    while( QTime::currentTime() < dieTime )
+
+    {
+
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
+
+    }
+
+}
+
 QImage img(height, width, QImage::Format_RGB888);
-QRgb rgb(qRgb(0, 255, 255));
+QRgb rgb(qRgb(255, 255, 255));
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    for (int x = 0; x < height; ++x)
+    {
+        for (int y = 0; y < width; ++y)
+        {
+            img.setPixel(x, y, qRgb(0, 0, 0));
+        }
+    }
+    ui->label->setPixmap(QPixmap::fromImage(img));
 }
 
 MainWindow::~MainWindow()
@@ -18,16 +42,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    Assignment6A();
-}
-
 void MainWindow::Assignment6A()
 {
-    int xC = ui->textEdit->toPlainText().toInt();
-    int yC = ui->textEdit_2->toPlainText().toInt();
-    int rad = ui->textEdit_3->toPlainText().toInt();
+    ui->label->show();
+    int xC = ui->spinXCenter->value();
+    int yC = ui->spinYCenter->value();
+    int rad = ui->spinRadius->value();
 
     float x1 = xC + rad * (float)sqrt(3) / 2;
     float x2 = xC - rad * (float)sqrt(3) / 2;
@@ -46,6 +66,8 @@ void MainWindow::BresenhamCircle(int xCenter, int yCenter, int radius)
     int x = 0;
     int y = radius;
     int d = 3 - (2 * radius);
+    int x_arr[100000], y_arr[100000];
+    int count = 0;
     while (x <= y)
     {
         if (d > 0)
@@ -58,17 +80,26 @@ void MainWindow::BresenhamCircle(int xCenter, int yCenter, int radius)
             d = d + (4 * x) + 6;
         }
         x++;
-        img.setPixel(xCenter + x, yCenter + y, rgb);
-        img.setPixel(xCenter + x, yCenter - y, rgb);
-        img.setPixel(xCenter - x, yCenter - y, rgb);
-        img.setPixel(xCenter - x, yCenter + y, rgb);
-        img.setPixel(xCenter + y, yCenter - x, rgb);
-        img.setPixel(xCenter + y, yCenter + x, rgb);
-        img.setPixel(xCenter - y, yCenter - x, rgb);
-        img.setPixel(xCenter - y, yCenter + x, rgb);
+        img.setPixel(xCenter + x, yCenter - y, rgb); // this is the first octant of the circle
+        ui->label->setPixmap(QPixmap::fromImage(img));
+        ui->label->show();
+        x_arr[count] = x,
+        y_arr[count] = y;
+        count++;
+        delay(50);
     }
-    ui->label->setPixmap(QPixmap::fromImage(img));
-    ui->label->show();
+    for(int i = 0; i < count; i++){
+        img.setPixel(xCenter - y_arr[i], yCenter - x_arr[i], rgb);
+        img.setPixel(xCenter + x_arr[i], yCenter + y_arr[i], rgb);
+        img.setPixel(xCenter - x_arr[i], yCenter - y_arr[i], rgb);
+        img.setPixel(xCenter - x_arr[i], yCenter + y_arr[i], rgb);
+        img.setPixel(xCenter + y_arr[i], yCenter - x_arr[i], rgb);
+        img.setPixel(xCenter + y_arr[i], yCenter + x_arr[i], rgb);
+        img.setPixel(xCenter - y_arr[i], yCenter + x_arr[i], rgb);
+        delay(100);
+        ui->label->setPixmap(QPixmap::fromImage(img));
+        ui->label->show();
+    }
 }
 
 void MainWindow::BresenhamLine(int x1, int y1, int x2, int y2)
@@ -125,13 +156,18 @@ void MainWindow::DDALine(float x1, float y1, float x2, float y2)
     ui->label->setPixmap(QPixmap::fromImage(img));
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_btnPlot_clicked()
+{
+    Assignment6A();
+}
+
+void MainWindow::on_btnColor_clicked()
 {
     QRgb color(QColorDialog::getColor().rgb()); //Able to select any color to draw
     rgb = color;                                //sets the value of the selected color to the global variable
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_btnClear_clicked()
 {
     for (int x = 0; x < height; ++x)
     {
@@ -142,6 +178,4 @@ void MainWindow::on_pushButton_3_clicked()
     }
     ui->label->setPixmap(QPixmap::fromImage(img));
 }
-
-
 

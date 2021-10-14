@@ -6,139 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>888</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QSpinBox" name="btnXCenter">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>100</y>
-      <width>46</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="btnYCenter">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>100</y>
-      <width>46</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="btnRadius">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>170</y>
-      <width>46</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPlot">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>340</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Plot</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnColor">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>390</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Color</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnClear">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>440</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Clear</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>70</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Xc&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>70</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Yc&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="textBrowser_3">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>140</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Radius&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="textBrowser_5">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>540</y>
+      <x>180</x>
+      <y>480</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -151,97 +31,132 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Assignment 6 A&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QWidget" name="RenderArea" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>40</y>
-      <width>151</width>
-      <height>111</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>70</y>
-      <width>441</width>
-      <height>331</height>
+      <x>20</x>
+      <y>20</y>
+      <width>461</width>
+      <height>431</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>420</y>
-      <width>104</width>
-      <height>85</height>
+      <x>510</x>
+      <y>50</y>
+      <width>231</width>
+      <height>131</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QTextBrowser" name="textBrowser">
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Xc&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinXCenter">
+         <property name="maximum">
+          <number>400</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_2">
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Yc&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinYCenter">
+         <property name="maximum">
+          <number>400</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_3">
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Radius&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinRadius">
+         <property name="maximum">
+          <number>1000</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>410</y>
-      <width>104</width>
-      <height>85</height>
+      <x>550</x>
+      <y>220</y>
+      <width>151</width>
+      <height>201</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>400</y>
-      <width>104</width>
-      <height>85</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>490</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>520</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>550</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="btnPlot">
+       <property name="text">
+        <string>Plot</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnColor">
+       <property name="text">
+        <string>Color</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClear">
+       <property name="text">
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

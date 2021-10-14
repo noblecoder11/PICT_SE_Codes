@@ -10,7 +10,7 @@ Algorithm for Sentinel Search:
 2. Store the last element in variable last
 3. Replace last element with required element (k)
 4. Initialize i=0 and run a while loop till arr[i] != k
-    1. increment if
+    1. increment i
 5. Replace the last element with last
 6. if i<n-1 or arr[n-1]==k, return i.
 else return "Not Found".
@@ -20,27 +20,27 @@ Algorithm for Binary Search:
 2. Run a while loop till left<=right
     2.1 Compare k with the middle element.
     2.2 If k matches with the middle element, we return the mid index.
-    2.3 Else If k is greater than the mid element, then x can only lie in the right half subarray after the mid element. So we make left=mid+1
+    2.3 Else If k is greater than the mid element, then k can only lie in the right half subarray after the mid element. So we make left=mid+1
     2.4 Else (k is small), make right= mid-1
-3. If the element is not found then return "Not found"
+3. If the element is not found then return "Not found".
 
 Algorithm for Fibonacci Search:
-1. Find the smallest Fibonacci Number greater than or equal to n. Let this number be fibM [m’th Fibonacci Number]. Let the two Fibonacci numbers preceding it be fibMm1 [(m-1)’th Fibonacci Number] and fibMm2 [(m-2)’th Fibonacci Number].
+1. Find the smallest Fibonacci Number greater than or equal to n. Let this number be fib [m’th Fibonacci Number]. Let the two Fibonacci numbers preceding it be fibm1 [(m-1)’th Fibonacci Number] and fibm2 [(m-2)’th Fibonacci Number].
 2. While the array has elements to be inspected: 
-    1.Compare x with the last element of the range covered by fibMm2
-    2.If x matches, return index
-    3.Else If x is less than the element, move the three Fibonacci variables two Fibonacci down, indicating elimination of approximately rear two-third of the remaining array.
-    4.Else x is greater than the element, move the three Fibonacci variables one Fibonacci down. Reset offset to index. Together these indicate the elimination of approximately front one-third of the remaining array.
-3. Since there might be a single element remaining for comparison, check if fibMm1 is 1. If Yes, compare x with that remaining element. If match, return index.4
+    1.Compare k with the last element of the range covered by fibm2
+    2.If k matches, return index
+    3.Else If k is less than the element, move the three Fibonacci variables(fib, fibm1, fibm2) two Fibonacci down, indicating elimination of approximately rear two-third of the remaining array.
+    4.Else k is greater than the element, move the three Fibonacci variables(fib, fibm1, fibm2) one Fibonacci down. Reset offset to index. Together these indicate the elimination of approximately front one-third of the remaining array.
+3. Since there might be a single element remaining for comparison, check if fibm1 is 1. If Yes, compare k with that remaining element. If match, return index.
 4. If the element is not found return "Not Found".
 
 Algorithm for MAIN MENU:
 1. Print info about program
 2. Input the list in random order
 3. Ask user whether he/she want same list or enter another list
-    1. If they want same list, store the same list in sortedArr
+    1. If they want same list, store the same list after sorting in sortedArr
     2. Else input new list
-5. Run a while loop till break is called
+4. Run a while loop till break is called
     1. Print both random and sorted list
     2. Input choice
     3. If choice==1
@@ -51,16 +51,15 @@ Algorithm for MAIN MENU:
         2. print(sentinelSearch(arr, k))
     5. If choice==3
         1. Input roll number
-        2. Print(binarySearch(arr, k))
+        2. Print(binarySearch(sortedArr, k))
     6. if choice==4
         1. input roll number
-        2. print(fibonacciSearch(arr, k))
+        2. print(fibonacciSearch(sortedArr, k))
     7. If choice==5
         1. Print("Thank you")
         2. break
     8. if choice==6
         1. print("Enter valid choice(1 to 5)")
-
 
 
 
@@ -142,9 +141,10 @@ def fibonacciSearch(arr, k):
 
 
 #MAIN MENU
-print("This program searches the roll number in the list of students using:\n1. Linear Search\n2. Sentinial Search\n3. Binary Search\n4. Fibonacci Search\n")
+print information about program
 
 arr=list((map(int, input("Enter the list of roll number of students in RANDOM order (space separated): ").split())))
+input array
 
 print("1. Sort the same list\n2. Enter new sorted list")
 sortedChoice=int(input("Enter your choice: "))
@@ -154,7 +154,6 @@ else:
     sortedArr=list((map(int, input("Enter the list of roll number of students in SORTED ORDER (space separated): ").split())))
 
 while True:
-    print("-"*20)
     print("The list you entered is: ", arr)
     print("Sorted list: ", sortedArr)
 
@@ -181,6 +180,5 @@ while True:
         print("Thank you.")
         break
 
-    else:
- 
+    else: 
         print("Enter a valid choice(1 to 5).")
