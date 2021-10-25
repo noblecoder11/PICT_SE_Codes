@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QColorDialog>
+#include <math.h>
 #include <QTime>
 #define height 400
 #define width 400

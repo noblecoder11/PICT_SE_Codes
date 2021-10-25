@@ -40,12 +40,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnPlotLine_clicked()
 {
-    // Algorithm Bresenham Line:
-//    QMessageBox messageBox;
-//    if(ui->spinBoxX1->value()==0 && ui->spinBoxX2==0 || ui->plainTextEdit_3->toPlainText().isEmpty() || ui->plainTextEdit_4->toPlainText().isEmpty()){
-//        messageBox.information(0,"Alert", "Fields cannot be empty");
-//    }
-//    else{
+
     int x1 = ui->spinBoxX1->value();
     int y1 = ui->spinBoxY1->value();
     int x2 = ui->spinBoxX2->value();
@@ -56,7 +51,6 @@ void MainWindow::on_btnPlotLine_clicked()
     ver++;          // change the number of vertex by 1
 
     DDALine(x1,y1,x2,y2);
-//    }
 
     ui->spinBoxX1->setValue(x2);
     ui->spinBoxY1->setValue(y2);

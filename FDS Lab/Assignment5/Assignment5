@@ -1,0 +1,86 @@
+# Code for insertion sort
+def insertionSort(arr):
+    iterations = 0
+    for i in range(1, len(arr)):
+ 
+        key = arr[i]    # Current element under consideration
+ 
+        j = i-1
+        while j >= 0 and key < arr[j] :
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+        iterations += 1
+    return iterations
+
+
+# Code for Shell Sort
+def shellSort(arr):
+    n = len(arr)
+    interval = n // 2   # initializing interval
+    passes = 0
+    while interval > 0:
+        # sorting elements at 'interval' using insertion sort
+        for i in range(interval, n):
+            key = arr[i]
+            j = i
+            while j >= interval and key < arr[j - interval]:
+                arr[j] = arr[j - interval]
+                j -= interval
+            arr[j] = key
+        passes += 1
+        interval //= 2  #halving interval
+    return passes
+
+# Code for getting top 5
+def topFive(arr):
+    shellSort(arr)
+    return arr[(len(arr)-5) : len(arr)]
+
+def checkArr(arr):
+    if (len(arr)<5):
+        print("Number of elements should be greater than 5")
+        return False
+    for i in range(len(arr)):
+        if 0<=arr[i]<=100:
+            pass
+        else:
+            print("All percentages should be in range 0 to 100")
+            return False
+    return True
+    
+
+# MAIN MENU
+print("Hi. This program allows you to sort the list using insertion and shell sort.")
+
+arr = []
+originalArr = list(arr)
+
+while True:
+    print("-"*30)
+    print("1. Insertion sort\n2. Shell Sort\n3. Print top 5\n4. Enter new list\n5. Exit\n")
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        iterations = insertionSort(arr)
+        print("You entered: ", originalArr)
+        print("Sorted arr: ", arr)
+        print("No. of iterations: ", iterations)
+        print("List successfully sorted using insertion sort")
+    elif choice == "2":
+        passes = shellSort(arr)
+        print("You entered: ", originalArr)
+        print("Sorted arr: ", arr)
+        print("List successfully sorted using shell sort")
+        print("No. of passes: ", passes)
+    elif choice == "3":
+        print(topFive(arr))
+    elif choice == "4":
+        tempArr = list(map(float, input("Enter a list (SPACE SEPARATED): ").split()))
+        if checkArr(tempArr):
+            arr = list(tempArr)
+            originalArr = list(tempArr)
+    elif choice == "5":
+        print("Thank you")
+        break
+    else:
+        print("Enter a valid choice(1 to 5).")
