@@ -1,0 +1,15 @@
+algo
+
+1. Create: createRecord (bookList/tapeList){
+    
+    if (bookList){
+        inputTitle()
+        inputPrice()
+        inputPages()
+    }
+    else {
+        inputTitle()
+        inputPrice()
+        inputPages()
+    }
+}
