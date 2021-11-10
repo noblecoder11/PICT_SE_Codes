@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>    //Using standard library instead of including many libraries
 #include <limits>   //For exception handling
 #include <ctime>    //For getting current time and date
-using namespace std;    
+using namespace std;
 
 // exception handling for roll number
 int inputRollno(string s)   //string s is used as different output is required in different cases

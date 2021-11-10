@@ -13,3 +13,10 @@ algo
         inputPages()
     }
 }
+
+choice
+Unique Id will be name
+1 - Create - Book or tape
+2 - read - book or tape or all
+3 - update - search book/tape and change
+4 - delete - search book/tape and delete

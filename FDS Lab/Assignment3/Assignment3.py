@@ -51,7 +51,7 @@ class matrix:
                 for j in range(B.num_col):
                     result=0
                     for k in range(B.num_row):
-                        result += A.a[i][k] * B.a[k][j]
+                        result += A.a[i][k] * B.a[k][j] 
                     new_row.append(result)
                 self.a.append(new_row)
             self.display()
