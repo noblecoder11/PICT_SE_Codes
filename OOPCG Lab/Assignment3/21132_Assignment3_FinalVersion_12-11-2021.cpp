@@ -22,15 +22,6 @@ bool isNumber(string str)
     return true;
 }
 
-// template is used here to handle both book and tape type of lists
-template <typename T>
-void displayAll(list <T> anyList)
-{
-    for (auto it : anyList)
-    {
-        it.getDetails();
-    }
-}
 
 // this function searches the book using title and also displays the details of the book
 template <typename X>
@@ -46,7 +37,7 @@ void searchTitle(list <X> anyList)
         if (it.title == title)
         {
             found = true;
-            it.getDetails();
+            it.showDetails();
         }
     }
         if (!found)
@@ -55,7 +46,6 @@ void searchTitle(list <X> anyList)
         }
 
 }
-
 
 // Class publication
 class publication
@@ -72,13 +62,28 @@ class book: public publication
 
 public:    
     // this fuction displays the details of required book
-    void getDetails()
+    void showDetails()
     {
         cout<<"-----------------------------------------------"<<endl;
         cout<<"Title: "<<title<<endl;
         cout<<"Price: "<<price<<endl;
         cout<<"Page Count: "<<pageCount<<endl;
         cout<<"-----------------------------------------------"<<endl;
+    }
+
+    string getTitle()
+    {
+        return title;
+    }
+    
+    float getPrice()
+    {
+        return price;
+    }
+
+    int getPages()
+    {
+        return pageCount;
     }
 
     // this fuction is used to set new book details. it also handles exception handling for various parameters
@@ -103,8 +108,8 @@ public:
         }
         catch (...) // catch statement for all exceptions
         {
-            cout << "Exception caught, Initializing all paramters to 0\n";
-            title = "";
+            cout << "Failed to set page count, Initializing all paramters to 0\n";
+            title = "0";
             price = 0.0;
             pageCount = 0;
             return;
@@ -117,14 +122,14 @@ public:
             {
             }
             else // exception handling for input
-                throw 0;
+                throw 100;
         }
         catch (...) // catch all the exceptions
         {
             cin.clear();
             cin.ignore();
-            cout << "Exception caught. Setting all values to 0\n";
-            title = "";
+            cout << "Failed to set page count. Setting all values to 0\n";
+            title = "0";
             price = 0.0;
             pageCount = 0;
             return;
@@ -142,9 +147,9 @@ public:
         catch (...) // catch all the exceptions
         {
             cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Exception caught. Setting all values to 0\n";
-            title = "";
+            cin.ignore();
+            cout << "Failed to set price. Setting all values to 0\n";
+            title = "0";
             price = 0.0;
             pageCount = 0;
             return;
@@ -159,8 +164,9 @@ class tape: public publication
     float playTime;
 public:
     // this fuction displays the details of required tape
-    void getDetails()
+    void showDetails()
     {
+        
         cout<<"-----------------------------------------------"<<endl;
         cout<<"Title: "<<title<<endl;
         cout<<"Price: "<<price<<endl;
@@ -168,6 +174,20 @@ public:
         cout<<"-----------------------------------------------"<<endl;
     }
 
+    string getTitle()
+    {
+        return title;
+    }
+    
+    float getPrice()
+    {
+        return price;
+    }
+
+    int getPlayTime()
+    {
+        return playTime;
+    }
 
     // this fuction is used to set new tape details. it also handles exception handling for various parameters
     void setTapeDetails()
@@ -192,7 +212,7 @@ public:
         catch (...) // catch statement for all exceptions
         {
             cout << "Failed to set title. initializing all paramters to 0\n";
-            title = "";
+            title = "0";
             price = 0.0;
             playTime = 0;
             return;
@@ -211,8 +231,8 @@ public:
         {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Setting page count failed. setting all values to 0\n";
-            title = "";
+            cout << "Setting playing time failed. setting all values to 0\n";
+            title = "0";
             price = 0.0;
             playTime = 0;
             return;
@@ -232,7 +252,7 @@ public:
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Setting price failed setting all values to 0\n";
-            title = "";
+            title = "0";
             price = 0.0;
             playTime = 0;
             return;
@@ -240,19 +260,53 @@ public:
     }
 };
 
+void displayAllBooks(list <book> bookList)
+{
+    cout<<setw(20)<<left<<"Title"<<setw(10)<<left<<"Price"<<setw(10)<<"Pages"<<endl;
+    if (bookList.size() == 0)
+    {
+        cout<<"There are no books"<<endl;
+    }
+    else
+    {
+        for (auto it : bookList)
+        {
+            cout<<setw(20)<<left<<it.getTitle()<<setw(10)<<left<<it.getPrice()<<setw(10)<<left<<it.getPages()<<endl;
+        }
+    }
+    
+}
+
+void displayAllTapes(list <tape> tapeList)
+{
+    cout<<setw(20)<<left<<"Title"<<setw(10)<<left<<"Price"<<setw(10)<<"Play Time"<<endl;
+    if (tapeList.size() == 0)
+    {
+        cout<<"There are no tapes"<<endl;
+    }
+    else
+    {
+        for (auto it : tapeList)
+        {
+            cout<<setw(20)<<left<<it.getTitle()<<setw(10)<<left<<it.getPrice()<<setw(10)<<left<<it.getPlayTime()<<endl;
+        }
+    }
+}
+
+
 int main()
 {
     list <tape> tapeList;
     list <book> bookList;
     while (true)
     {
-        cout<<"-------- MAIN MENU --------\n";
+        cout<<"\n-------- MAIN MENU --------\n";
         cout<<"1. Create record\n2. Search record\n3. Display record\n4. Delete record\n5. Exit\n"<<endl;
         string choice;
         cout<<"Enter your choice: ";
         cin>>choice;
 
-        if (choice == "1")
+        if (choice == "1")  // create record
         {
             while (true)
             {
@@ -260,31 +314,31 @@ int main()
                 cout<<"1. Create book\n2. Create tape\n3. Back"<<endl;
                 cout<<"Enter choice: ";
                 cin>>createChoice;
-                if (createChoice == "1")
+                if (createChoice == "1") // create book
                 {
                     book newBook;
                     newBook.setBookDetails();
                     bookList.push_back(newBook);
                     break;
                 }
-                else if (createChoice == "2")
+                else if (createChoice == "2")   // create tape
                 {
                     tape newTape;
                     newTape.setTapeDetails();
                     tapeList.push_back(newTape);
                     break;
                 }
-                else if (createChoice == "3")
+                else if (createChoice == "3")   // back
                 {
                     break;
                 }
-                else
+                else    // invalid choice
                 {
                     cout<<"The choice you entered is invalid. Please enter a valid choice."<<endl;
                 }
             }
         }
-        else if (choice == "2")
+        else if (choice == "2") // search title
         {
             while (true)
             {
@@ -292,28 +346,28 @@ int main()
                 cout<<"1. Search book\n2. Search tape\n3. Back\n";
                 cout<<"Enter a choice: ";
                 cin>>searchChoice;
-                if (searchChoice == "1")
+                if (searchChoice == "1") // search book
                 {
                     searchTitle(bookList);
                     break;
                 }
-                else if (searchChoice == "2")
+                else if (searchChoice == "2") // search tape
                 {
                     searchTitle(tapeList);
                     break;
                 }
-                else if (searchChoice == "3")
+                else if (searchChoice == "3") // back
                 {
                     break;
                 }
-                else
+                else    // invalid choice
                 {
                     cout<<"Enter a valid choice\n";
                 }
 
             }
         }
-        else if (choice == "3")
+        else if (choice == "3") // display
         {
             while(true)
             {
@@ -321,98 +375,107 @@ int main()
                 cout<<"1. Display books\n2. Display tapes\n3. Display All\n4. Back"<<endl;
                 cout<<"Enter choice: ";
                 cin>>displayChoice;
-                if (displayChoice == "1")
+                if (displayChoice == "1") // display book
                 {
-                    displayAll(bookList);
+                    displayAllBooks(bookList);
                     break;
                 }
-                else if (displayChoice == "2")
+                else if (displayChoice == "2") // display tape
                 {
-                    displayAll(tapeList);
+                    displayAllTapes(tapeList);
                     break;
                 }
-                else if (displayChoice == "3")
+                else if (displayChoice == "3") // display all
                 {
-                    cout<<"Books\n";
-                    displayAll(bookList);
-                    cout<<"Tapes\n";
-                    displayAll(tapeList);
+                    
+                    cout<<"-------- BOOKS --------\n";
+                    displayAllBooks(bookList);
+                    
+                    cout<<"-------- TAPES --------\n";
+                    displayAllTapes(tapeList);
                     break;
                 }
-                else if (displayChoice == "4")
+                else if (displayChoice == "4") // back
                 {
                     break;
                 }
-                else
+                else // invalid choice
                 {
                     cout<<"Enter a valid choice."<<endl;
                 }
             }
         }
-        else if (choice == "4")
+        else if (choice == "4") // delete
         {
-            string deleteChoice;
-            cout << "1. Delete Book\n2. Delete Tape\n3. Back\n";
-            cout<<"Enter a choice: ";
-            cin >> deleteChoice;
+            while(true)
+            {
+                string deleteChoice;
+                cout << "1. Delete Book\n2. Delete Tape\n3. Back\n";
+                cout<<"Enter a choice: ";
+                cin >> deleteChoice;
 
-            if (deleteChoice == "1")
-            {
-                cout << "Enter title of book to delete: ";
-                string title;
-                cin.ignore();
-                getline(cin, title);
-                bool isFound = false;
-                
-                list<book>::iterator it;
-                for (it = bookList.begin(); it != bookList.end(); ++it)
+                if (deleteChoice == "1")
                 {
-                    if (title == it->title)
+                    cout << "Enter title of book to delete: ";
+                    string title;
+                    cin.ignore();
+                    getline(cin, title);
+                    bool isFound = false;
+                    
+                    list<book>::iterator it;
+                    for (it = bookList.begin(); it != bookList.end(); ++it)
                     {
-                        isFound = true;
-                        bookList.erase(it);
-                        cout << "Deleted book record\n";
-                        break;
+                        if (title == it->title)
+                        {
+                            isFound = true;
+                            bookList.erase(it);
+                            cout << "Deleted book record\n";
+                            break;
+                        }
                     }
-                }
-                if (!isFound)
-                {
-                    cout << "Book not found\n";
-                }
-            }
-            else if (deleteChoice == "2")
-            {
-                cout << "Enter name of Tape to delete: ";
-                string title;
-                cin.ignore();
-                getline(cin, title);
-                bool isFound = false;
-                list<tape>::iterator it;
-                for (it = tapeList.begin(); it != tapeList.end(); ++it)
-                {
-                    if (title == it->title)
+                    if (!isFound)
                     {
-                        isFound = true;
-                        tapeList.erase(it);
+                        cout << "Book not found\n";
                     }
+                    break;
                 }
-                if (isFound)
+                else if (deleteChoice == "2")
                 {
-                    cout << "Deleted Tape record\n";
+                    cout << "Enter name of Tape to delete: ";
+                    string title;
+                    cin.ignore();
+                    getline(cin, title);
+                    bool isFound = false;
+                    list<tape>::iterator it;
+                    for (it = tapeList.begin(); it != tapeList.end(); ++it)
+                    {
+                        if (title == it->title)
+                        {
+                            isFound = true;
+                            tapeList.erase(it);
+                            break;
+                        }
+                    }
+                    if (isFound)
+                    {
+                        cout << "Deleted Tape record\n";
+                    }
+                    if (!isFound)
+                    {
+                        cout << "Tape not found\n";
+                    }
+                    break;
                 }
-                if (!isFound)
+                else if (deleteChoice == "3")
                 {
-                    cout << "Tape not found\n";
+                    break;
+                }
+                else
+                {
+                    cout<<"Enter a valid choice\n";
                 }
             }
-            else if (deleteChoice == "3")
-            {
-                break;
-            }
-            else
-            {
-                cout<<"Enter a valid choice\n";
-            }
+            
         }
         else if (choice == "5")
         {

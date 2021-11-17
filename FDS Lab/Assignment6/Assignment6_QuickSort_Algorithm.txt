@@ -1,0 +1,48 @@
+ALGORITHM
+
+Algorithm for partition: (start, end, arr, currArr)
+1. select last element as pivot
+2. set pivotIndex = start
+3. iterate the arr from start to end
+    1. if element is less than or equal to pivot, swap the element with element at index pivotIndex and Increment pivotIndex
+4. swap last element with element at pivotIndex
+5. If currArr is True, print current array after this step
+6. return pivotIndex
+
+Algorithm for Quick Sort: (start, end, arr, currArr)
+1. if start is less than end
+    1. assign p = partition(start, end, arr, currArr)
+    2. call quickSort(start, p-1, arr, currArr)
+    3. call quickSort(p+1, end, arr, currArr)
+
+Algorithm for TopFive: (arr)
+1. initialize n to size of arr
+2. sort the arr using quickSort
+3. run a loop from 1 to 5
+    1. print(arr[n-i])
+
+Algorithm for checkArr: (arr)
+1. if size of arr is less than 5
+    1. print "number of elements should be greater than 5"
+    2. return False
+2. iterate through arr and check if all elements are in range 0 to 100, if not print "percentages should be in range 0 to 100" and return False
+3. return True
+
+Algorithm for Main Menu:
+1. Declare arr as empty list and originalArr = arr
+2. Run a while loop until break statement is called
+    1. Print Main Menu
+    2. Input choice
+    3. If choice is "1" (Enter a new list)
+        1. input tempArr as new list
+        2. if checkArr(tempArr) is true then assign arr = tempArr and originalArr = tempArr
+    4. Elif choice is "2" (Top Five)
+        1. call topFive(arr)
+    5. if choice is "3" (Quick Sort)
+        1. call quickSort(0, len(arr)-1, arr, True)
+        2. Print originalArr(unsorted) and arr(sorted)
+        3. assign arr = list(originalArr) to randomize arr
+    6. Elif choice is "4" (Exit)
+        1. print thank you and break
+    7. Else
+        1. print(Enter a valid choice)
