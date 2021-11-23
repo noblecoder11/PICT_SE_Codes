@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 5.0.1, 2021-10-27T11:33:07. -->
+<!-- Written by QtCreator 5.0.1, 2021-11-17T14:44:04. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -237,8 +237,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/PICT COLLEGE/Semester 3/PICT_SE/OOPCG Lab/CG_Assignment6/CG_Assingnment6/CG_Assingnment6.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/PICT COLLEGE/Semester 3/PICT_SE/OOPCG Lab/CG_Assignment6/CG_Assingnment6/CG_Assingnment6.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">CG_Assingnment62</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/PICT COLLEGE/Semester 3/PICT_SE_Codes/OOPCG Lab/CG_Assignment6/CG_Assingnment6/CG_Assingnment6.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/PICT COLLEGE/Semester 3/PICT_SE_Codes/OOPCG Lab/CG_Assignment6/CG_Assingnment6/CG_Assingnment6.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

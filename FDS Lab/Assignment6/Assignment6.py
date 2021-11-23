@@ -62,8 +62,8 @@ while True:
             originalArr = list(tempArr)
     elif choice == "2":
         # True is passed as parameter to print the list at each iteration
-        quickSort(0, len(arr)-1, arr, True)
         print("You entered: ", originalArr)
+        quickSort(0, len(arr)-1, arr, True)
         print("Sorted arr: ", arr)
         # Unsorting the list for next function so that it doesn't sort the sorted list again
         arr = list(originalArr)
