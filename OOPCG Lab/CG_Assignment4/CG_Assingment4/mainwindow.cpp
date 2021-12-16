@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <iostream>
 #include <time.h>
 #include <QColorDialog>
 #include <QTime>
@@ -10,9 +11,8 @@
 QImage img(width, height, QImage::Format_RGB888);
 QRgb rgb(qRgb(255,255,255));
 
-int vert, i, y, j, temp, k, xi[20];
 int xCoord[20], yCoord[20], vertex=0;
-float slope[20], dx, dy;
+int xlastVertex, ylastVertex;
 
 // delay function is used to point points with certain delay so that we can see the plotting of curves
 void delay( int ms )    // time in milisecond is given as argument
@@ -82,12 +82,16 @@ void Lines::BresenhamLine(int x1, int y1, int x2, int y2,Ui::MainWindow *ui)
 }
 
 void MainWindow::ScanFill(Ui::MainWindow *ui)
-{  //Scan line fill method used to fill the polygon.
+{
+    //Scan line fill method used to fill the polygon.
     xCoord[vertex] = xCoord[0];
     yCoord[vertex] = yCoord[0];
 
+    float slope[20];
+    float dx, dy;
+
     // set the slope array for all the vertices. If slope is 0 then it is not considered for processing.
-    for(i=0;i<vertex;i++)
+    for(int i=0;i<vertex;i++)
     {
         dy = yCoord[i+1] - yCoord[i];
         dx = xCoord[i+1] - xCoord[i];
@@ -105,13 +109,13 @@ void MainWindow::ScanFill(Ui::MainWindow *ui)
         }
     }
 
-    for (int y = 0; y < 500; y++)
+    for (int y = 0; y < height; y++)
     {
-        k = 0;
-
+        int k = 0;
+        int xi[20];
         // code to generate the scan line table
         // Active edge table generation using the y values which are to be further sorted in the increasing order x.
-        for(i=0;i<vertex;i++)
+        for(int i=0;i<vertex;i++)
         {
             if(((yCoord[i]<=y) && (yCoord[i+1]>y)) || ((yCoord[i]>y) && (yCoord[i+1]<=y)))
             {
@@ -120,28 +124,23 @@ void MainWindow::ScanFill(Ui::MainWindow *ui)
             }
         }
 
-        //Insertion sort used for sorting.
+        // Code for bubble sort
         //Sorting Active Edge values in order of x values.
-        for (i = 1; i < k-1; i++)
+        for(int j=0;j<k-1;j++)
+        {
+            for(int i=0;i<k-j-1;i++)
             {
-                int key = xi[i];
-                j = i - 1;
-
-                /* Move elements of arr[0..i-1], that are
-                greater than key, to one position ahead
-                of their current position */
-                while (j >= 0 && xi[j] > key)
+                if(xi[i]>xi[i+1])
                 {
-                    xi[j + 1] = xi[j];
-                    j = j - 1;
+                    int temp = xi[i];
+                    xi[i] = xi[i+1];
+                    xi[i+1] = temp;
                 }
-                xi[j + 1] = key;
             }
-
-
+        }
 
         // Taking pairs of values and then filling the polygon.
-        for(i=0;i<k;i+=2)
+        for(int i=0;i<k;i+=2)
         {
           line.BresenhamLine(xi[i],y,xi[i+1]+1,y, ui);
           delay(2);
@@ -151,10 +150,9 @@ void MainWindow::ScanFill(Ui::MainWindow *ui)
 }
 
 
-
 void MainWindow::on_btnPlotLine_clicked()
 {
-    QMessageBox messageBox;
+
         int x1 = ui->spinBoxX1->value();
         int y1 = ui->spinBoxY1->value();
         int x2 = ui->spinBoxX2->value();
@@ -166,11 +164,11 @@ void MainWindow::on_btnPlotLine_clicked()
         ui->spinBoxY2->clear();
         xCoord[vertex] = x1;    // set the value of vertex(x) in the array
         yCoord[vertex] = y1;    // set the valaue of vertex(y) in the array
+        xlastVertex = x2;
+        ylastVertex = y2;
         vertex++;         // change the number of vertex by 1
         line.BresenhamLine(x1,y1,x2,y2, ui);
 }
-
-
 
 void MainWindow::on_btnColor_clicked()
 {
@@ -192,8 +190,8 @@ void MainWindow::on_btnClear_clicked()
     ui->drawingArea->setPixmap(QPixmap::fromImage(img));
     for(int q=0;q<=vertex;q++)
     {
-         xCoord[vertex]=0;
-         yCoord[vertex]=0;
+         xCoord[q]=0;
+         yCoord[q]=0;
     };
 
     vertex = 0;
@@ -206,11 +204,21 @@ void MainWindow::on_btnClear_clicked()
 
 void MainWindow::on_btnScanFill_clicked()
 {
-    ScanFill(ui);
-    ui->spinBoxX1->setValue(0);
-    ui->spinBoxY1->setValue(0);
-    ui->spinBoxX2->setValue(0);
-    ui->spinBoxY2->setValue(0);
+        if ((xlastVertex != xCoord[0]) && (ylastVertex != yCoord[0]))
+        {
+            QMessageBox incompletePoly;
+            incompletePoly.information(0, "Incomplete Polygon", "Please complete your polygon to use scan fill.");
+        }
+        else
+        {
+            xCoord[vertex] = 0;
+            yCoord[vertex] = 0;
+            ScanFill(ui);
+            ui->spinBoxX1->setValue(0);
+            ui->spinBoxY1->setValue(0);
+            ui->spinBoxX2->setValue(0);
+            ui->spinBoxY2->setValue(0);
+        }
 }
 
 
@@ -222,6 +230,8 @@ void MainWindow::on_btnFeelingLucky_clicked()
          xCoord[i]=RangedRand(0, 400);
          yCoord[i]=RangedRand(0, 400);
     }
+    xlastVertex = xCoord[0];
+    ylastVertex = yCoord[0];
     for (int i=0; i<vertex-1; i++)
     {
         line.BresenhamLine(xCoord[i], yCoord[i], xCoord[i+1], yCoord[i+1], ui);

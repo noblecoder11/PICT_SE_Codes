@@ -1,0 +1,99 @@
+1. Create a class 'Node' with constructors consisting data, prev pointer and next pointer.
+
+2. Create a class 'doublyLinkedList' consisting pointer to node 'head' which will be set to NULL with default constructor.
+    1. Create a method 'insertNodeAtHead(int data)'
+        1. Create a new node with data
+        2. if head is NULL, point head to newNode and set prev and next of newNode to NULL, return
+        3. set newNode's prev to NULL and newNode's next to head
+        4. set head's prev = newNode and set head equal to newNode
+
+    2. Create a method 'insertNodeAtTail(int data)'
+        1. Create a new node with data
+        2. if head is NULL, point head to newNode and set prev and next of newNode to NULL, return
+        3. Create a pointer temp carrying address of head and traverse to end of list i.e. temp points at the last node
+        4. Set temp's next as newNode
+        5. set newNode's prev to temp and newNode's next to NULL
+
+    3. Create a method 'printList'
+        1. if head is NULL, print "list empty" and return
+        2. Traverse to the end of list while printing data of each node
+
+3. Create a class binaryNumber which inherits publicly from class 'doublyLinkedList'
+    1. Create method 'input'
+        1. input number of bits
+        2. if bits is greater than 0
+            1. Run a for loop from i = 0 to bits-1
+                1. Input data
+                2. while data not equal to 0 or 1, print "enter 0 or 1" and input data again
+                3. insertNodeAtTail(data)
+
+    2. Create a method 'onesComplement'
+        1. Create a pointer temp = head
+        2. initialize binaryNumber oc
+        3. Traverse through the list and at each node if data is 1 change it to 0 and vice versa
+        4. return oc
+
+    3. Create a method 'twosComplement'
+        1. initialize binaryNumber tc and one
+        2. one.insertNodeAtTail(1)
+        3. set tc = onesComplement() + one
+        4. return tc
+
+    4. Overload operator+ for binaryNumber/ operator+ (binaryNumber num)
+        1. initialize number1_ptr = this->head and number2_ptr = num.head
+        2. Traverse to the end of both lists (binaryNumbers) such that number1_ptr and number2_ptr point to the last nodes of respective lists
+        3. initialize binaryNumber sum and int carry = 0
+        4. Run a while loop till number1_ptr != NULL or number2_ptr != NULL
+            1. Set int data = carry
+            2. if number1_ptr != NULL
+                1. add data of number1_ptr to data
+                2. number1_ptr = number1_ptr->prev
+            3. if number2_ptr != NULL
+                1. add data of number2_ptr to data
+                2. number2_ptr = number2_ptr->prev 
+            4. if data = 3, set carry as 1 and data as 1
+            5. if data = 2, set carry as 1 and data as 0
+        5. If carry is 1, sum.insertNodeAtHead(carry);
+        6. return sum
+
+4. In main function:
+    1. Declare two binaryNumber n1 and n2.
+    2. Run a while loop till break is called:
+        1. Print Main Menu
+        2. Input choice
+        3. If choice is 1
+            1. call n1.input()
+            2. print n1 using n1.printList()
+            3. call n2.input()
+            4. print n2 using n2.printList()
+        4. Else if choice is 2
+            1. Run a while loop till break is called
+                1. print n1 and n2
+                2. Input choice2
+                3. Create binaryNumber oc
+                4. if choice2 is 1
+                    1. set oc = n1.onesComplement
+                    2. print oc
+                5. else if choice2 is 2
+                    1. set oc = n2.onesComplement
+                    2. print oc
+                6. else print "enter valid choice" and continue
+                7. break
+        5. Else if choice is 3
+            1. Run a while loop till break is called
+                1. print n1 and n2
+                2. Input choice3
+                3. Create binaryNumber tc
+                4. if choice3 is 1
+                    1. set tc = n1.twosComplement
+                    2. print tc
+                5. else if choice3 is 2
+                    1. set tc = n2.twosComplement
+                    2. print tc
+                6. else print "enter valid choice" and continue
+                7.  break
+        6. Else if choice is 4
+            1. print sum of n1 and n2
+        7. Else if choice is 5
+            1. print "Thank you" and break
+        8. Else print "Enter a valid choice"

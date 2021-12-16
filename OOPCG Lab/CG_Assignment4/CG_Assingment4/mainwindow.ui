@@ -58,7 +58,7 @@ font-weight: strong;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>561</x>
@@ -181,7 +181,7 @@ font-weight: strong;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>591</x>
@@ -198,16 +198,6 @@ font-weight: strong;</string>
        </property>
        <property name="text">
         <string>Plot Line</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnClosePolygon">
-       <property name="styleSheet">
-        <string notr="true">background-color: #F3F0D7;</string>
-       </property>
-       <property name="text">
-        <string>Close Polygon</string>
        </property>
       </widget>
      </item>
@@ -243,7 +233,7 @@ font-weight: strong;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>521</x>

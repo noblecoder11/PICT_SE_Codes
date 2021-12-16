@@ -47,6 +47,9 @@ public:
   
     // Function to print the linked list.
     void printList();
+  
+    // Function to delete the node at given position
+    void deleteNode(int);
 
 };
 
@@ -68,6 +71,7 @@ void doublyLinkedList::insertNodeAtHead(int Data)
     newNode->next =  head;
     head->prev = newNode;
     head = newNode;
+
 }
 
 void doublyLinkedList::insertNodeAtTail(int Data)
@@ -157,10 +161,9 @@ void binaryNumber::input()
 binaryNumber binaryNumber::onesComplement()
 {
     Node* temp = head;
-    binaryNumber oc;    // oc stands for one's complement
+    binaryNumber oc;
     while (temp != NULL)
     {
-        // setting 0 to 1 and 1 to 0 using ternary operator
         temp->data ? oc.insertNodeAtTail(0) : oc.insertNodeAtTail(1);
         temp = temp->next;
     }
@@ -169,12 +172,12 @@ binaryNumber binaryNumber::onesComplement()
 
 binaryNumber binaryNumber::twosComplement()
 {
-    binaryNumber tc;    // tc stands for two's complement
+    binaryNumber tc;
     binaryNumber one;
     one.insertNodeAtTail(1);
-    // 2's Compl = 1's Compl + 1
     tc = onesComplement() + one;
     return tc;
+    // return (tc.onesComplement() + one);
 }
 
 binaryNumber binaryNumber::operator+ (binaryNumber num)
@@ -203,14 +206,12 @@ binaryNumber binaryNumber::operator+ (binaryNumber num)
         if (number1_ptr != nullptr)
         {
             data += number1_ptr->data;
-            // traversing in reverse order
             number1_ptr = number1_ptr->prev;
         }
 
         if (number2_ptr != nullptr)
         {
             data += number2_ptr->data;
-            // traversing in reverse order
             number2_ptr = number2_ptr->prev;
         }
 

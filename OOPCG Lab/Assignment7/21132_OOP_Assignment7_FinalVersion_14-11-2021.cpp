@@ -4,12 +4,12 @@ andopen it again as an input file and read the information from the file.
 */
 
 #include <iostream> // input-output stream for cout and cin
-#include <fstream>  // fstream is parent class of both ofstream and ifstream class
+#include <fstream> 
 using namespace std;
 
 int main()
 {
-    // making object of fstream class so it can access both functions of ofstream and ifstream class
+    // making object of fstream class so it has both functions of ofstream and ifstream class
     fstream myFile;
 
     // running a while loop till the break statement is called
