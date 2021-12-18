@@ -46,7 +46,7 @@ details createRecord(vector <details> database) {
 
     // input name
     string Name;
-    cout << "\nEnter your name: ";
+    cout << "\nEnter name: ";
     cin.ignore();
     getline(cin, Name);
     entree.name = Name;
@@ -145,17 +145,21 @@ details createRecord(vector <details> database) {
 }
 
 void searchRecord(vector <details> database, string query) {
-    query = capitalize(query);
+    string queryCapitalized = capitalize(query);
     int repeated = 0; // counts the number of times query appears in map
     vector <details> :: iterator result; // iterator of map to store the found result
 
     auto itr = database.begin(); // iterator to iterate through map
     for (itr = database.begin(); itr != database.end(); ++itr) {
         int found = itr->name.find(query); // find returns position of 'query' is found else return string::npos
+        int foundCapitalized = itr->name.find(queryCapitalized);
         // if name found
         if (found != string::npos) {
             result = itr; // store the value in state
             repeated++; // increment the count
+        } else if (foundCapitalized != string::npos) {
+            result = itr;
+            repeated++;
         }
     }
     if (repeated > 1) { // if query present in more than one pair
@@ -212,7 +216,7 @@ int main()
     while (true)
     {
         cout << "\n----------- MAIN MENU -----------\n";
-        cout << "1. Create record\n2. Search record\n3. Sort records\n4. Diplay database\n5. Exit\n";
+        cout << "1. Create record\n2. Search record\n3. Sort records\n4. Display database\n5. Exit\n";
 
         string choice;  // using string to avoid exceptions
         cout << "Enter your choice: ";

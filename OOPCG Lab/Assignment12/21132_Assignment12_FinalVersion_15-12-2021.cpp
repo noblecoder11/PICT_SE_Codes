@@ -40,17 +40,21 @@ string capitalize(string str)
 
 // function for searching and displaying the population of state entered
 void search(map<string, ll> statePopulation, string query) {
-    // query = capitalize(query); // capitalizing the query allows us searching even if user enters all small letters
+    string queryCapitalized = capitalize(query); // capitalizing the query allows us searching even if user enters all small letters
     int repeated = 0; // counts the number of times query appears in map
     map <string, ll> :: iterator state; // iterator of map to store the found result
 
     auto itr = statePopulation.begin(); // iterator to iterate through map
     for (itr = statePopulation.begin(); itr != statePopulation.end(); ++itr) {
         int found = itr->first.find(query); // find returns position of 'query' is found else return string::npos
+        int foundCapitalized = itr->first.find(queryCapitalized);
         // if found
         if (found != string::npos) {
             state = itr; // store the value in state
             repeated++; // increment the count
+        } else if (foundCapitalized != string::npos) {
+            state = itr;
+            repeated++;
         }
     }
 
